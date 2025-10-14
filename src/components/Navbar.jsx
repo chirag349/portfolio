@@ -41,8 +41,8 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed w-full top-0 z-50 backdrop-blur-md transition-all duration-500 ${
         isScrolled
-          ? "bg-[#1a2b4b]/95 shadow-lg border-b border-[#d9a85c]/40"
-          : "bg-gradient-to-r from-[#0e1625]/70 to-[#1a2b4b]/60"
+          ? " shadow-lg border-b border-[#d9a85c]/40"
+          : ""
       }`}
     >
       {/* Scroll Progress Bar */}
@@ -51,7 +51,7 @@ export default function Navbar() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <div className="container mx-auto flex justify-between items-center px-6 py-3">
+      <div className="container mx-auto flex justify-between items-center px-6 py-6">
         {/* Logo */}
         <motion.h1
           initial={{ opacity: 0, x: -40 }}

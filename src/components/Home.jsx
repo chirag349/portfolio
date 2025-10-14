@@ -8,7 +8,7 @@ import {
   FaWhatsapp,
   FaEnvelope,
 } from "react-icons/fa";
-import ProfilePic from "../assets/profile.jpg"; // local image only
+import ProfilePic from "../assets/profile.png"; // local image only
 
 export default function Home() {
   const socials = [
@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-[#0e1625] via-[#1a2b4b] to-[#0e1625] relative overflow-hidden"
+      className="h-screen flex flex-col justify-center items-center text-center  relative overflow-hidden"
     >
       {/* Floating animated gradient orbs */}
       <motion.div
@@ -45,11 +45,30 @@ export default function Home() {
         className="relative"
       >
         <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-[#d9a85c] to-[#1a2b4b] blur-md opacity-70 animate-pulse"></div>
-        <img
-          src={ProfilePic}
-          alt="Chirag Singh"
-          className="relative w-36 h-36 md:w-44 md:h-44 rounded-full border-4 border-[#d9a85c] object-cover shadow-lg"
-        />
+        <motion.div
+  initial={{ scale: 0, opacity: 0 }}
+  animate={{ scale: 1, opacity: 1 }}
+  transition={{ duration: 1.2 }}
+  className="relative w-44 h-44 md:w-60 md:h-60 lg:w-72 lg:h-72 rounded-full"
+>
+  {/* Glowing gradient behind */}
+  <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-[#d9a85c] to-[#1a2b4b] blur-3xl opacity-70 animate-pulse"></div>
+
+  {/* Profile Image */}
+  <img
+    src={ProfilePic}
+    alt="Chirag Singh"
+    className="relative w-full h-full rounded-full border-4 border-[#d9a85c] object-cover shadow-2xl"
+  />
+
+  {/* Subtle rotating ring */}
+  <motion.div
+    className="absolute inset-0 border-4 border-[#d9a85c]/30 rounded-full"
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
+  />
+</motion.div>
+
       </motion.div>
 
       {/* Heading */}
@@ -108,7 +127,7 @@ export default function Home() {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
-        className="absolute bottom-6 text-[#d9a85c] text-sm tracking-wider"
+        className="absolute bottom-16 text-[#d9a85c] text-xl tracking-wider"
       >
         ↓ Scroll Down
       </motion.div>

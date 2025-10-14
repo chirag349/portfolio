@@ -1,20 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaWhatsapp, FaEnvelope, FaPython } from "react-icons/fa";
 
 export default function About() {
-  const skills = [
-    "React",
-    "JavaScript",
-    "Tailwind CSS",
-    "Framer Motion",
-    "Node.js",
-    "Express",
-    "MongoDB",
-    "Python",
-    "Git & GitHub",
-    "UI/UX Design",
-  ];
+  const skills = ["Python", "Pandas", "Matplotlib", "Bokeh", "Plotly"];
 
   const socials = [
     { icon: FaGithub, link: "https://github.com/chirag349" },
@@ -26,11 +15,9 @@ export default function About() {
   ];
 
   return (
-    <section
-      id="about"
-      className="min-h-screen flex flex-col justify-center items-center px-6 relative overflow-hidden bg-gradient-to-br from-[#0e1625] via-[#1a2b4b] to-[#0e1625] text-[#f5f5f5]"
-    >
-      {/* Animated Background Orbs */}
+    <section id="about" className="min-h-screen flex flex-col justify-center items-center px-6 relative overflow-hidden">
+
+      {/* Background Orbs */}
       <motion.div
         className="absolute top-16 left-10 w-64 h-64 bg-[#d9a85c] opacity-20 blur-3xl rounded-full"
         animate={{ scale: [1, 1.25, 1], rotate: [0, 45, 0] }}
@@ -59,10 +46,7 @@ export default function About() {
         transition={{ duration: 1, delay: 0.3 }}
         className="text-center max-w-4xl text-gray-300 text-lg md:text-xl leading-relaxed mb-12"
       >
-        I’m <span className="text-[#d9a85c] font-semibold">Chirag Singh</span>, a passionate Full Stack Developer dedicated to crafting
-        <span className="font-medium"> modern, responsive, and accessible web applications</span>.  
-        With expertise in React, Node.js, and Tailwind CSS, I create interactive interfaces with smooth animations.  
-        I also focus on clean code architecture, seamless UX, and continuous learning of cutting-edge technologies.
+        I’m <span className="text-[#d9a85c] font-semibold">Chirag Singh</span>, a Python developer focused on <span className="font-medium">data analysis and visualization</span> using Python, Pandas, Matplotlib, Bokeh, and Plotly. I create insightful and interactive data solutions with clean code and seamless UX.
       </motion.p>
 
       {/* Skills */}
@@ -79,15 +63,12 @@ export default function About() {
         {skills.map((skill, index) => (
           <motion.span
             key={index}
-            variants={{
-              hidden: { opacity: 0, scale: 0.8 },
-              visible: { opacity: 1, scale: 1 },
-            }}
+            variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1 } }}
             whileHover={{ scale: 1.1, y: -5, backgroundColor: "#d9a85c", color: "#0e1625" }}
             transition={{ type: "spring", stiffness: 200 }}
-            className="bg-[#1a2b4b]/60 text-[#d9a85c] border border-[#d9a85c]/40 px-5 py-2 rounded-full font-medium shadow-md cursor-default hover:shadow-[#d9a85c]/30 hover:bg-[#1a2b4b]/80 transition-all"
+            className="bg-[#1a2b4b]/60 text-[#d9a85c] border border-[#d9a85c]/40 px-5 py-2 rounded-full font-medium shadow-md cursor-default hover:shadow-[#d9a85c]/30 hover:bg-[#1a2b4b]/80 transition-all flex items-center gap-2"
           >
-            {skill}
+            <FaPython /> {skill}
           </motion.span>
         ))}
       </motion.div>
@@ -102,13 +83,7 @@ export default function About() {
         {socials.map((social, i) => {
           const Icon = social.icon;
           return (
-            <a
-              key={i}
-              href={social.link}
-              target="_blank"
-              rel="noreferrer"
-              className="text-3xl text-[#f5f5f5] hover:text-[#d9a85c] transition-colors"
-            >
+            <a key={i} href={social.link} target="_blank" rel="noreferrer" className="text-3xl text-[#f5f5f5] hover:text-[#d9a85c] transition-colors">
               <Icon />
             </a>
           );
@@ -125,18 +100,6 @@ export default function About() {
       >
         Let’s Collaborate 🤝
       </motion.a>
-
-      {/* Rotating Background Rings */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 70, ease: "linear" }}
-        className="absolute top-16 right-16 w-40 h-40 border-2 border-[#d9a85c]/30 rounded-full"
-      />
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ repeat: Infinity, duration: 90, ease: "linear" }}
-        className="absolute bottom-24 left-16 w-64 h-64 border-4 border-[#1a2b4b]/40 rounded-full"
-      />
     </section>
   );
 }

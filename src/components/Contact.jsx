@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 px-6 md:px-20 relative overflow-hidden bg-gradient-to-br from-[#0e1625] via-[#1a2b4b] to-[#0e1625] text-[#f5f5f5] text-center"
+      className="py-24 px-6 md:px-20 relative overflow-hidden   text-center"
     >
       {/* Floating Background Circles */}
       <motion.div

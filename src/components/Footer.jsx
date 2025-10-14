@@ -18,9 +18,10 @@ export default function Footer() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="bg-[#1a2b4b] py-8 text-center text-[#f5f5f5] relative overflow-hidden"
-    >
-      <p className="text-[#d9a85c] font-semibold mb-4">
+      className="py-8 text-center text-[#f5f5f5] relative overflow-hidden"
+    > 
+    <hr/>
+      <p className="text-[#d9a85c] mt-10 font-semibold mb-4">
         © {new Date().getFullYear()} Chirag Singh | All Rights Reserved
       </p>
 
