@@ -1,118 +1,141 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 export default function About() {
-  return (
-    <section className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-gray-900 via-green-900 to-green-800 text-gray-100 px-6 relative">
+  const skills = [
+    "React",
+    "JavaScript",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Python",
+    "Git & GitHub",
+    "UI/UX Design",
+  ];
 
-      {/* Profile Image */}
+  const socials = [
+    { icon: FaGithub, link: "https://github.com/chirag349" },
+    { icon: FaLinkedin, link: "https://www.linkedin.com/in/chirag-singh-55149b277" },
+    { icon: FaTwitter, link: "https://x.com/skchiragsingh" },
+    { icon: FaInstagram, link: "https://www.instagram.com/chirxg.04?igsh=MWlrOTFydWRoa2U3Zg==" },
+    { icon: FaWhatsapp, link: "https://wa.me/918287746942?text=hi%20chirag%20from%20portfolio" },
+    { icon: FaEnvelope, link: "mailto:skchiragsingh@gmail.com" },
+  ];
+
+  return (
+    <section
+      id="about"
+      className="min-h-screen flex flex-col justify-center items-center px-6 relative overflow-hidden bg-gradient-to-br from-[#0e1625] via-[#1a2b4b] to-[#0e1625] text-[#f5f5f5]"
+    >
+      {/* Animated Background Orbs */}
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="mb-8"
-      >
-        <img
-          src="https://i.pravatar.cc/250" // replace with your actual image
-          alt="Chirag Singh"
-          className="w-40 h-40 rounded-full border-4 border-green-500 shadow-xl"
-        />
-      </motion.div>
+        className="absolute top-16 left-10 w-64 h-64 bg-[#d9a85c] opacity-20 blur-3xl rounded-full"
+        animate={{ scale: [1, 1.25, 1], rotate: [0, 45, 0] }}
+        transition={{ duration: 12, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute bottom-24 right-16 w-80 h-80 bg-[#1a2b4b] opacity-30 blur-3xl rounded-full"
+        animate={{ scale: [1, 1.15, 1], rotate: [0, -30, 0] }}
+        transition={{ duration: 14, repeat: Infinity }}
+      />
 
       {/* Heading */}
       <motion.h1
-        initial={{ y: -50, opacity: 0 }}
+        initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-4xl md:text-5xl font-bold text-center text-green-300 mb-4"
+        transition={{ duration: 1 }}
+        className="text-4xl md:text-5xl font-bold text-[#d9a85c] mb-4 text-center"
       >
-        Hi, I'm <span className="text-skin-500">Chirag Singh</span>
+        About <span className="text-[#f5f5f5]">Me</span>
       </motion.h1>
 
-      {/* Subheading */}
+      {/* Bio */}
       <motion.p
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-center text-gray-300 max-w-3xl mb-8 text-lg md:text-xl"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        className="text-center max-w-4xl text-gray-300 text-lg md:text-xl leading-relaxed mb-12"
       >
-        I'm a <span className="text-green-400 font-semibold">Frontend Developer</span> and designer, 
-        passionate about crafting modern, user-friendly web experiences. 
-        I specialize in React, Tailwind CSS, and creating interactive, animated interfaces.
+        I’m <span className="text-[#d9a85c] font-semibold">Chirag Singh</span>, a passionate Full Stack Developer dedicated to crafting
+        <span className="font-medium"> modern, responsive, and accessible web applications</span>.  
+        With expertise in React, Node.js, and Tailwind CSS, I create interactive interfaces with smooth animations.  
+        I also focus on clean code architecture, seamless UX, and continuous learning of cutting-edge technologies.
       </motion.p>
 
       {/* Skills */}
       <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="flex flex-wrap justify-center gap-4 mb-8"
+        initial="hidden"
+        whileInView="visible"
+        variants={{
+          hidden: { opacity: 0, y: 30 },
+          visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.15 } },
+        }}
+        viewport={{ once: true }}
+        className="flex flex-wrap justify-center gap-4 mb-12"
       >
-        {["React", "JavaScript", "Tailwind CSS", "Framer Motion", "Node.js", "HTML5", "CSS3"].map((skill) => (
-          <span
-            key={skill}
-            className="bg-green-700 text-skin-500 px-4 py-2 rounded-full font-medium shadow-md hover:scale-105 transition-transform cursor-default"
+        {skills.map((skill, index) => (
+          <motion.span
+            key={index}
+            variants={{
+              hidden: { opacity: 0, scale: 0.8 },
+              visible: { opacity: 1, scale: 1 },
+            }}
+            whileHover={{ scale: 1.1, y: -5, backgroundColor: "#d9a85c", color: "#0e1625" }}
+            transition={{ type: "spring", stiffness: 200 }}
+            className="bg-[#1a2b4b]/60 text-[#d9a85c] border border-[#d9a85c]/40 px-5 py-2 rounded-full font-medium shadow-md cursor-default hover:shadow-[#d9a85c]/30 hover:bg-[#1a2b4b]/80 transition-all"
           >
             {skill}
-          </span>
+          </motion.span>
         ))}
       </motion.div>
 
-      {/* Social Icons */}
+      {/* Social Links */}
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
-        className="flex space-x-6 mb-8"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="flex flex-wrap justify-center gap-6 mb-12"
       >
-        <a
-          href="https://github.com/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-green-400 transition-colors text-3xl"
-        >
-          <FaGithub />
-        </a>
-        <a
-          href="https://linkedin.com/in/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-green-400 transition-colors text-3xl"
-        >
-          <FaLinkedin />
-        </a>
-        <a
-          href="https://twitter.com/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-green-400 transition-colors text-3xl"
-        >
-          <FaTwitter />
-        </a>
+        {socials.map((social, i) => {
+          const Icon = social.icon;
+          return (
+            <a
+              key={i}
+              href={social.link}
+              target="_blank"
+              rel="noreferrer"
+              className="text-3xl text-[#f5f5f5] hover:text-[#d9a85c] transition-colors"
+            >
+              <Icon />
+            </a>
+          );
+        })}
       </motion.div>
 
-      {/* Call-to-Action */}
+      {/* CTA Button */}
       <motion.a
         href="#contact"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="inline-block bg-green-400 hover:bg-green-500 text-gray-900 font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform"
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="inline-block bg-[#d9a85c] text-[#0e1625] font-semibold px-10 py-4 rounded-full shadow-md hover:bg-[#b98c49] hover:shadow-[#d9a85c]/50 transition-all"
       >
-        Let's Collaborate
+        Let’s Collaborate 🤝
       </motion.a>
 
-      {/* Animated Background Shapes */}
+      {/* Rotating Background Rings */}
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
-        className="absolute top-10 left-10 w-40 h-40 border-2 border-green-600 rounded-full opacity-20"
+        transition={{ repeat: Infinity, duration: 70, ease: "linear" }}
+        className="absolute top-16 right-16 w-40 h-40 border-2 border-[#d9a85c]/30 rounded-full"
       />
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ repeat: Infinity, duration: 90, ease: "linear" }}
-        className="absolute bottom-20 right-20 w-60 h-60 border-4 border-green-500 rounded-full opacity-15"
+        className="absolute bottom-24 left-16 w-64 h-64 border-4 border-[#1a2b4b]/40 rounded-full"
       />
     </section>
   );

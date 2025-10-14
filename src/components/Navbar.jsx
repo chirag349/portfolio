@@ -5,58 +5,97 @@ import { HiMenu, HiX } from "react-icons/hi";
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const menuItems = ["home", "about", "skills", "projects", "contact"];
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY;
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      setScrollProgress(progress);
+      setIsScrolled(scrollTop > 40);
+
       menuItems.forEach((item) => {
         const section = document.getElementById(item);
         if (section) {
-          const offsetTop = section.offsetTop - 80;
+          const offsetTop = section.offsetTop - 100;
           const offsetBottom = offsetTop + section.offsetHeight;
-          if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
+          if (scrollTop >= offsetTop && scrollTop < offsetBottom) {
             setActiveSection(item);
           }
         }
       });
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <nav className="fixed w-full top-0 z-50 backdrop-blur-md bg-gray-900/80 shadow-lg">
-      <div className="container mx-auto flex justify-between items-center p-4">
+    <motion.nav
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed w-full top-0 z-50 backdrop-blur-md transition-all duration-500 ${
+        isScrolled
+          ? "bg-[#1a2b4b]/95 shadow-lg border-b border-[#d9a85c]/40"
+          : "bg-gradient-to-r from-[#0e1625]/70 to-[#1a2b4b]/60"
+      }`}
+    >
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="h-[3px] bg-[#d9a85c] rounded-r-full"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
+      <div className="container mx-auto flex justify-between items-center px-6 py-3">
         {/* Logo */}
         <motion.h1
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl font-bold text-cyan-400 cursor-pointer"
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-2xl md:text-3xl font-bold tracking-wide text-[#d9a85c] cursor-pointer select-none"
         >
-          Chirag <span className="text-white">Singh</span>
+          <span className="text-[#f5f5f5]">Chirag</span>{" "}
+          <span className="text-[#d9a85c] drop-shadow-[0_0_6px_#d9a85c]">
+            Singh
+          </span>
         </motion.h1>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6">
+        <ul className="hidden md:flex space-x-8">
           {menuItems.map((item) => (
             <li key={item}>
-              <a
+              <motion.a
                 href={`#${item}`}
-                className={`capitalize hover:text-cyan-400 transition-colors ${
-                  activeSection === item ? "text-cyan-400 font-semibold" : "text-white"
+                whileHover={{ scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className={`capitalize relative text-[17px] font-medium transition-all duration-300 ${
+                  activeSection === item
+                    ? "text-[#d9a85c]"
+                    : "text-[#f5f5f5] hover:text-[#d9a85c]"
                 }`}
               >
                 {item}
-              </a>
+                {activeSection === item && (
+                  <motion.span
+                    layoutId="underline"
+                    className="absolute -bottom-1 left-0 w-full h-[2px] bg-[#d9a85c] rounded-full shadow-[0_0_8px_#d9a85c]"
+                  />
+                )}
+              </motion.a>
             </li>
           ))}
         </ul>
 
         {/* Mobile Menu Icon */}
-        <div className="md:hidden text-2xl text-white cursor-pointer" onClick={() => setNavOpen(!navOpen)}>
+        <div
+          className="md:hidden text-3xl text-[#d9a85c] cursor-pointer"
+          onClick={() => setNavOpen(!navOpen)}
+        >
           {navOpen ? <HiX /> : <HiMenu />}
         </div>
       </div>
@@ -66,16 +105,18 @@ export default function Navbar() {
         <motion.ul
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden flex flex-col items-center bg-gray-900/95 space-y-4 py-4"
+          transition={{ duration: 0.4 }}
+          className="md:hidden flex flex-col items-center bg-[#0e1625]/95 space-y-5 py-6 border-t border-[#d9a85c]/30 shadow-lg"
         >
           {menuItems.map((item) => (
             <li key={item}>
               <a
                 href={`#${item}`}
                 onClick={() => setNavOpen(false)}
-                className={`capitalize text-white hover:text-cyan-400 transition-colors ${
-                  activeSection === item ? "text-cyan-400 font-semibold" : ""
+                className={`capitalize text-lg transition-all ${
+                  activeSection === item
+                    ? "text-[#d9a85c] font-semibold"
+                    : "text-[#f5f5f5] hover:text-[#d9a85c]"
                 }`}
               >
                 {item}
@@ -84,6 +125,6 @@ export default function Navbar() {
           ))}
         </motion.ul>
       )}
-    </nav>
+    </motion.nav>
   );
 }
