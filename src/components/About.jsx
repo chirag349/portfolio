@@ -98,7 +98,7 @@ export default function About() {
         transition={{ type: "spring", stiffness: 300 }}
         className="inline-block bg-[#d9a85c] text-[#0e1625] font-semibold px-10 py-4 rounded-full shadow-md hover:bg-[#b98c49] hover:shadow-[#d9a85c]/50 transition-all"
       >
-        Let’s Collaborate 🤝
+        Let’s Collaborate
       </motion.a>
     </section>
   );

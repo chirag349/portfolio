@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center items-center text-center relative overflow-x-hidden bg-[#0e1625] text-white px-6"
+      className="min-h-screen flex flex-col justify-center items-center text-center relative overflow-x-hidden text-white px-6"
     >
       {/* Profile Picture */}
       <motion.div
@@ -42,8 +42,7 @@ className="relative w-full h-full rounded-full border border-[#d9a85c]/80 object
         transition={{ delay: 0.6, duration: 0.8 }}
         className="text-sm sm:text-base md:text-lg text-gray-300 max-w-xl mb-8 px-2"
       >
-        I’m a passionate developer who loves crafting beautiful and functional
-        digital experiences — from web apps to creative UI designs.
+        I blend AI with thoughtful design to build intelligent, seamless digital experiences.
       </motion.p>
 
       {/* Buttons */}
