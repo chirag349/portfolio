@@ -1,135 +1,70 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaInstagram,
-  FaWhatsapp,
-  FaEnvelope,
-} from "react-icons/fa";
-import ProfilePic from "../assets/profile.png"; // local image only
+import ProfilePic from "../assets/profile.png"; // change path as needed
 
 export default function Home() {
-  const socials = [
-    { icon: FaGithub, link: "https://github.com/chirag349", name: "GitHub" },
-    { icon: FaLinkedin, link: "https://www.linkedin.com/in/chirag-singh-55149b277", name: "LinkedIn" },
-    { icon: FaTwitter, link: "https://x.com/skchiragsingh", name: "X" },
-    { icon: FaInstagram, link: "https://www.instagram.com/chirxg.04?igsh=MWlrOTFydWRoa2U3Zg==", name: "Instagram" },
-    { icon: FaWhatsapp, link: "https://wa.me/918287746942?text=hi%20chirag%20from%20portfolio", name: "WhatsApp" },
-    { icon: FaEnvelope, link: "mailto:skchiragsingh@gmail.com", name: "Email" },
-  ];
-
   return (
     <section
       id="home"
-      className="h-screen flex flex-col justify-center items-center text-center  relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-center text-center relative overflow-x-hidden bg-[#0e1625] text-white px-6"
     >
-      {/* Floating animated gradient orbs */}
+      {/* Profile Picture */}
       <motion.div
-        className="absolute top-20 left-20 w-48 h-48 bg-[#d9a85c] rounded-full opacity-20 blur-2xl"
-        animate={{ scale: [1, 1.3, 1], rotate: [0, 45, 0] }}
-        transition={{ duration: 8, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-10 right-10 w-64 h-64 bg-[#1a2b4b] rounded-full opacity-30 blur-3xl"
-        animate={{ scale: [1, 1.2, 1], rotate: [0, -30, 0] }}
-        transition={{ duration: 10, repeat: Infinity }}
-      />
-
-      {/* Profile Image with glow */}
-      <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.2 }}
+        className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full mb-6"
       >
-        <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-[#d9a85c] to-[#1a2b4b] blur-md opacity-70 animate-pulse"></div>
-        <motion.div
-  initial={{ scale: 0, opacity: 0 }}
-  animate={{ scale: 1, opacity: 1 }}
-  transition={{ duration: 1.2 }}
-  className="relative w-44 h-44 md:w-60 md:h-60 lg:w-72 lg:h-72 rounded-full"
->
-  {/* Glowing gradient behind */}
-  <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-[#d9a85c] to-[#1a2b4b] blur-3xl opacity-70 animate-pulse"></div>
+        {/* Gradient glow behind image */}
+        <div className="absolute -inset-2 sm:-inset-3 rounded-full bg-gradient-to-tr from-[#d9a85c] to-transparent blur-xl opacity-70 animate-pulse"></div>
 
-  {/* Profile Image */}
-  <img
-    src={ProfilePic}
-    alt="Chirag Singh"
-    className="relative w-full h-full rounded-full border-2 border-[#d9a85c] object-cover shadow-2xl object-top scale-95"
-  />
-
-  {/* Subtle rotating ring */}
-  <motion.div
-    className="absolute inset-0 border-4 border-[#d9a85c]/30 rounded-full"
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-  />
-</motion.div>
-
+        {/* Profile Image */}
+        <img
+          src={ProfilePic}
+          alt="Chirag Singh"
+className="relative w-full h-full rounded-full border border-[#d9a85c]/80 object-cover object-[center_top] shadow-[0_0_25px_rgba(217,168,92,0.5)] scale-90"
+        />
       </motion.div>
 
-      {/* Heading */}
+      {/* Name + Title */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.3 }}
-        className="text-4xl md:text-5xl font-bold mb-3 text-[#f5f5f5]"
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2"
       >
-        Hi, I’m <span className="text-[#d9a85c]">Chirag Singh</span>
+        Hey, I'm <span className="text-[#d9a85c]">Chirag Singh</span>
       </motion.h1>
 
-      {/* Subheading */}
       <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 1 }}
-        className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl px-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+        className="text-sm sm:text-base md:text-lg text-gray-300 max-w-xl mb-8 px-2"
       >
-        A creative <span className="text-[#d9a85c] font-medium">Full Stack Developer</span> who
-        loves crafting elegant, user-friendly web experiences 🚀
+        I’m a passionate developer who loves crafting beautiful and functional
+        digital experiences — from web apps to creative UI designs.
       </motion.p>
 
-      {/* CTA Buttons */}
+      {/* Buttons */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 1 }}
-        className="flex flex-col sm:flex-row gap-4"
+        className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center"
       >
         <a
           href="#projects"
-          className="bg-[#d9a85c] hover:bg-[#b98c49] text-[#0e1625] px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-[#d9a85c]/50 transition-all"
+          className="bg-[#d9a85c] hover:bg-[#b98c49] text-[#0e1625] px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-[#d9a85c]/50 transition-all text-center"
         >
           View My Work
         </a>
         <a
           href="#contact"
-          className="border border-[#d9a85c] text-[#d9a85c] px-8 py-3 rounded-lg font-semibold hover:bg-[#d9a85c]/10 transition-all"
+          className="border border-[#d9a85c] text-[#d9a85c] px-8 py-3 rounded-lg font-semibold hover:bg-[#d9a85c]/10 transition-all text-center"
         >
           Contact Me
         </a>
-      </motion.div>
-
-      {/* Social Icons */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="flex flex-wrap justify-center gap-6 mt-8 text-2xl"
-      >
-        
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
-        className="absolute bottom-16 text-[#d9a85c] text-xl tracking-wider"
-      >
-        ↓ Scroll Down
       </motion.div>
     </section>
   );
