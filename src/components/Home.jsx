@@ -58,7 +58,7 @@ export default function Home() {
   <img
     src={ProfilePic}
     alt="Chirag Singh"
-    className="relative w-full h-full rounded-full border-4 border-[#d9a85c] object-cover shadow-2xl"
+    className="relative w-full h-full rounded-full border-2 border-[#d9a85c] object-cover shadow-2xl object-top scale-95"
   />
 
   {/* Subtle rotating ring */}
