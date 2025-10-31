@@ -1,6 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaInstagram,
+  FaWhatsapp,
+  FaEnvelope,
+} from "react-icons/fa";
 
 export default function Footer() {
   const socials = [
@@ -25,7 +32,7 @@ export default function Footer() {
       <p className="text-[#d9a85c] font-semibold mb-1">
         © {new Date().getFullYear()} Chirag Singh
       </p>
-      <p className="text-sm text-[#bfbfbf] mb-5">
+      <p className="text-sm text-[#bfbfbf] mb-3">
         In collaboration with{" "}
         <a
           href="https://mokshbhardwaj.netlify.app"
@@ -35,6 +42,10 @@ export default function Footer() {
         >
           Moksh Bhardwaj
         </a>
+      </p>
+
+      <p className="text-xs italic text-[#999] mb-6">
+        Built with an advanced tech stack and a supportive partner ✨
       </p>
 
       <div className="flex justify-center flex-wrap gap-5 text-2xl">
