@@ -19,10 +19,23 @@ export default function Footer() {
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       className="py-8 text-center text-[#f5f5f5] relative overflow-hidden"
-    > 
-    <hr/>
-      <p className="text-[#d9a85c] mt-10 font-semibold mb-4">
+    >
+      <hr />
+      <p className="text-[#d9a85c] mt-10 font-semibold mb-2">
         © {new Date().getFullYear()} Chirag Singh | All Rights Reserved
+      </p>
+
+      {/* Added supportive partner + made with love line */}
+      <p className="text-sm text-[#bfbfbf] mb-6">
+        Made with ❤️, professionalism & responsive design — in collaboration with{" "}
+        <a
+          href="https://mokshbhardwaj.netlify.app"
+          target="_blank"
+          rel="noreferrer"
+          className="text-[#d9a85c] hover:underline font-medium"
+        >
+          Moksh Bhardwaj
+        </a>
       </p>
 
       <div className="flex justify-center flex-wrap gap-6 text-2xl">
