@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
   FaInstagram,
   FaWhatsapp,
   FaEnvelope,
@@ -13,7 +12,6 @@ export default function Footer() {
   const socials = [
     { icon: FaGithub, link: "https://github.com/chirag349", name: "GitHub" },
     { icon: FaLinkedin, link: "https://linkedin.com/in/chirag349", name: "LinkedIn" },
-    { icon: FaTwitter, link: "https://twitter.com", name: "X" },
     { icon: FaInstagram, link: "https://instagram.com", name: "Instagram" },
     { icon: FaWhatsapp, link: "https://wa.me/your-number", name: "WhatsApp" },
     { icon: FaEnvelope, link: "mailto:chirag@example.com", name: "Email" },
@@ -21,34 +19,45 @@ export default function Footer() {
 
   return (
     <motion.footer
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="py-6 text-center text-[#f5f5f5] relative overflow-hidden"
+      className="relative overflow-hidden py-10 text-center bg-[#0b0b0b] text-[#f5f5f5]"
     >
-      <hr className="opacity-30 mb-6" />
+      {/* Rotating border circle */}
+      <motion.div
+        className="absolute top-[-40px] right-[-40px] w-52 h-52 rounded-full border border-[#d9a85c]/20 opacity-20"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 80, ease: "linear" }}
+      />
 
-      <p className="text-[#d9a85c] font-semibold mb-1">
-        © {new Date().getFullYear()} Chirag Singh
-      </p>
-      <p className="text-sm text-[#bfbfbf] mb-3">
-        In collaboration with{" "}
+      {/* Main Tagline */}
+      <motion.h2
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="text-xl md:text-2xl font-semibold mb-4 text-[#d9a85c]"
+      >
+        Built with an Advanced Tech Stack and a Supportive Partner
+      </motion.h2>
+
+      {/* Credits */}
+      <p className="text-sm text-[#bfbfbf] mb-6">
+        © {new Date().getFullYear()}{" "}
+        <span className="text-[#d9a85c] font-semibold">Chirag Singh</span> &{" "}
         <a
           href="https://mokshbhardwaj.netlify.app"
           target="_blank"
           rel="noreferrer"
-          className="text-[#d9a85c] hover:underline"
+          className="text-[#d9a85c] hover:underline font-semibold"
         >
           Moksh Bhardwaj
         </a>
       </p>
 
-      <p className="text-xs italic text-[#999] mb-6">
-        Built with an advanced tech stack and a supportive partner ✨
-      </p>
-
-      <div className="flex justify-center flex-wrap gap-5 text-2xl">
+      {/* Social Icons */}
+      <div className="flex justify-center gap-6 text-2xl">
         {socials.map((social, i) => {
           const Icon = social.icon;
           return (
@@ -57,7 +66,7 @@ export default function Footer() {
               href={social.link}
               target="_blank"
               rel="noreferrer"
-              whileHover={{ scale: 1.15, color: "#d9a85c" }}
+              whileHover={{ scale: 1.2, color: "#d9a85c" }}
               transition={{ type: "spring", stiffness: 300 }}
               title={social.name}
               className="text-[#f5f5f5] hover:text-[#d9a85c] transition-colors"
@@ -67,12 +76,6 @@ export default function Footer() {
           );
         })}
       </div>
-
-      <motion.div
-        className="absolute top-0 right-10 w-32 h-32 rounded-full border border-[#d9a85c]/20 opacity-20"
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 80, ease: "linear" }}
-      />
     </motion.footer>
   );
 }
