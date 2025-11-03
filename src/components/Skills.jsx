@@ -5,14 +5,12 @@ import PandasIcon from "../assets/pandas.png";
 import MatplotlibIcon from "../assets/matplot.jpg";
 import BokehIcon from "../assets/bokeh.png";
 import PlotlyIcon from "../assets/Plotly.png";
-import SeabornIcon from "../assets/seaborn.png";
 
 export default function Skills() {
   const skills = [
     { name: "Python", icon: PythonIcon, level: 95 },
     { name: "Pandas", icon: PandasIcon, level: 90 },
     { name: "Matplotlib", icon: MatplotlibIcon, level: 85 },
-    { name: "Seaborn", icon: SeabornIcon, level: 85 },
     { name: "Bokeh", icon: BokehIcon, level: 80 },
     { name: "Plotly", icon: PlotlyIcon, level: 80 },
   ];
@@ -20,7 +18,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-24 px-6 md:px-20 text-center relative overflow-hidden bg-gradient-to-b from-[#0e0f12] via-[#14161a] to-[#0e0f12]"
+      className="py-24 px-6 md:px-20 text-center relative overflow-hidden"
     >
       {/* Floating glowing shapes */}
       <motion.div
@@ -38,51 +36,49 @@ export default function Skills() {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-4xl md:text-5xl font-extrabold text-[#d9a85c] mb-16 tracking-wide"
+        className="text-3xl md:text-4xl font-bold text-[#d9a85c] mb-12"
       >
         My Skills
       </motion.h2>
 
-      <div className="flex flex-wrap justify-center gap-10">
+      <div className="flex flex-wrap justify-center gap-8">
         {skills.map((skill, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 40, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: i * 0.2 }}
-            className="relative flex flex-col items-center backdrop-blur-lg bg-white/10 border border-white/10 p-6 rounded-2xl shadow-xl hover:shadow-[#d9a85c]/50 hover:scale-105 transition-all duration-300"
+            className="relative flex flex-col items-center bg-gray-200 p-6 rounded-xl shadow-lg hover:scale-105 hover:bg-gray-600 transition-transform cursor-pointer"
           >
-            {/* Icon */}
-            <div className="w-20 h-20 mb-5 flex justify-center items-center">
+            {/* Icon with background removed visually */}
+            <div className="w-20 h-20 mb-4 flex justify-center items-center bg-transparent">
               <img
                 src={skill.icon}
                 alt={skill.name}
-                className="w-16 h-16 object-contain bg-transparent mix-blend-multiply"
+                className="w-16 h-16 object-contain mix-blend-multiply bg-transparent"
                 style={{
-                  filter: "brightness(1.1) contrast(1.15)",
+                  filter: "brightness(1.1) contrast(1.1)",
                 }}
               />
             </div>
 
             {/* Skill Name */}
-            <p className="text-lg font-semibold text-gray-100 mb-3 tracking-wide">
-              {skill.name}
-            </p>
+            <p className="text-gray-900 font-semibold mb-3">{skill.name}</p>
 
-            {/* Skill Bar */}
-            <div className="w-40 h-2 bg-gray-700/50 rounded-full overflow-hidden">
+            {/* Animated Skill Bar */}
+            <div className="w-32 h-2 bg-[#f5f5f5]/20 border rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: `${skill.level}%` }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, delay: i * 0.2 }}
-                className="h-full bg-gradient-to-r from-[#d9a85c] to-[#f2d27d] rounded-full"
+                className="h-full bg-[#d9a85c] rounded-full"
               />
             </div>
 
             {/* Skill Level */}
-            <span className="text-sm mt-2 text-gray-300">{skill.level}%</span>
+            <span className="text-sm mt-2 text-gray-800">{skill.level}%</span>
           </motion.div>
         ))}
       </div>
