@@ -50,7 +50,7 @@ export default function Navbar() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      <div className="container mx-auto flex justify-between items-center px-6 py-6">
+      <div className="container mx-auto flex justify-between items-center px-6 py-2">
         {/* 🔹 Logo + Name */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -62,7 +62,7 @@ export default function Navbar() {
           <motion.img
             src={Logo}
             alt="Logo"
-            className="w-16 h-16 object-contain mix-blend-multiply bg-transparent"
+            className="w-12 h-12 object-contain mix-blend-multiply bg-transparent"
             style={{
               filter: "brightness(1.1) contrast(1.1)",
             }}
