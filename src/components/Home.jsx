@@ -33,7 +33,8 @@ className="relative w-full h-full rounded-full border border-[#d9a85c]/80 object
         transition={{ delay: 0.4, duration: 0.8 }}
         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2"
       >
-        Hey, I'm <span className="text-[#d9a85c]">Chirag Singh</span>
+        Hi 
+        <br /> I'm <span className="text-[#d9a85c]">Chirag Singh</span>
       </motion.h1>
 
       <motion.p

@@ -7,11 +7,11 @@ import {
   FaInstagram,
   FaWhatsapp,
   FaEnvelope,
-  FaPython,
 } from "react-icons/fa";
 
 export default function About() {
-  const skills = ["Python", "Pandas", "Matplotlib", "Bokeh", "Plotly"];
+  // ✅ Added Seaborn + removed icons from display
+  const skills = ["Python", "Pandas", "Matplotlib", "Seaborn", "Bokeh", "Plotly"];
 
   const socials = [
     { icon: FaGithub, link: "https://github.com/chirag349" },
@@ -68,7 +68,7 @@ export default function About() {
           className="text-center max-w-4xl text-gray-300 text-lg md:text-xl leading-relaxed mb-12 px-2"
         >
           I’m <span className="text-[#d9a85c] font-semibold">Chirag Singh</span>, a Python developer focused on{" "}
-          <span className="font-medium">data analysis and visualization</span> using Python, Pandas, Matplotlib, Bokeh, and Plotly.
+          <span className="font-medium">data analysis and visualization</span> using Python, Pandas, Matplotlib, Seaborn, Bokeh, and Plotly.
           I create insightful and interactive data solutions with clean code and seamless UX.
         </motion.p>
 
@@ -101,9 +101,9 @@ export default function About() {
                 color: "#0e1625",
               }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="bg-[#1a2b4b]/60 text-[#d9a85c] border border-[#d9a85c]/40 px-5 py-2 rounded-full font-medium shadow-md cursor-default hover:shadow-[#d9a85c]/30 hover:bg-[#1a2b4b]/80 transition-all flex items-center gap-2"
+              className="bg-[#1a2b4b]/60 text-[#d9a85c] border border-[#d9a85c]/40 px-5 py-2 rounded-full font-medium shadow-md cursor-default hover:shadow-[#d9a85c]/30 hover:bg-[#1a2b4b]/80 transition-all"
             >
-              <FaPython /> {skill}
+              {skill}
             </motion.span>
           ))}
         </motion.div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
+import Logo from "../assets/logo.png"; // transparent logo
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
@@ -40,9 +41,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed w-full top-0 z-50 backdrop-blur-md transition-all duration-500 ${
-        isScrolled
-          ? " shadow-lg border-b border-[#d9a85c]/40"
-          : ""
+        isScrolled ? "shadow-lg border-b border-[#d9a85c]/40" : ""
       }`}
     >
       {/* Scroll Progress Bar */}
@@ -52,18 +51,43 @@ export default function Navbar() {
       />
 
       <div className="container mx-auto flex justify-between items-center px-6 py-6">
-        {/* Logo */}
-        <motion.h1
+        {/* 🔹 Logo + Name */}
+        <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-2xl md:text-3xl font-bold tracking-wide text-[#d9a85c] cursor-pointer select-none"
+          className="flex items-center gap-3 cursor-pointer select-none"
         >
-          <span className="text-[#f5f5f5]">Chirag</span>{" "}
-          <span className="text-[#d9a85c] drop-shadow-[0_0_6px_#d9a85c]">
-            Singh
-          </span>
-        </motion.h1>
+          {/* 🌀 Animated Rotating Logo */}
+          <motion.img
+            src={Logo}
+            alt="Logo"
+            className="w-16 h-16 object-contain mix-blend-multiply bg-transparent"
+            style={{
+              filter: "brightness(1.1) contrast(1.1)",
+            }}
+            animate={{
+              rotate: [-8, 8, -8], // gentle left-right swing
+            }}
+            transition={{
+              duration: 4, // smooth speed
+              ease: "easeInOut",
+              repeat: Infinity, // infinite loop
+            }}
+            whileHover={{
+              scale: 1.1,
+              rotate: 0,
+              transition: { duration: 0.4 },
+            }}
+          />
+
+          <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
+            <span className="text-[#f5f5f5]">Chirag</span>{" "}
+            <span className="text-[#d9a85c] drop-shadow-[0_0_6px_#d9a85c]">
+              Singh
+            </span>
+          </h1>
+        </motion.div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8">
