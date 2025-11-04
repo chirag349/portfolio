@@ -62,7 +62,7 @@ export default function Navbar() {
           <motion.img
             src={Logo}
             alt="Logo"
-            className="w-12 h-12 object-contain mix-blend-multiply bg-transparent"
+            className="md:w-16 md:h-16 w-12 h-12 object-contain mix-blend-multiply bg-transparent"
             style={{
               filter: "brightness(1.1) contrast(1.1)",
             }}
@@ -81,12 +81,7 @@ export default function Navbar() {
             }}
           />
 
-          <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
-            <span className="text-[#f5f5f5]">Chirag</span>{" "}
-            <span className="text-[#d9a85c] drop-shadow-[0_0_6px_#d9a85c]">
-              Singh
-            </span>
-          </h1>
+          
         </motion.div>
 
         {/* Desktop Menu */}
