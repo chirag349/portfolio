@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-24 px-6 md:px-20 relative overflow-hidden   text-center"
+      className="py-24 px-6 md:px-20 relative overflow-hidden text-center"
     >
       {/* Floating Background Circles */}
       <motion.div

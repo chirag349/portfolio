@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center items-center text-center relative overflow-x-hidden text-white px-6"
+      className="py-20 min-h-screen flex flex-col justify-center items-center text-center relative overflow-x-hidden text-white px-6"
     >
       {/* Profile Picture */}
       <motion.div
