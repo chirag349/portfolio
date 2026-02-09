@@ -1,98 +1,88 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaPython, FaReact, FaDatabase, FaFlask, FaFileInvoice } from "react-icons/fa";
+import { FaBrain } from "react-icons/fa";
 
 export default function Projects() {
   const projects = [
     {
-      title: "Student Management System",
-      desc: "Python + Tkinter + Database",
-      icon: FaPython,
-      github: "https://github.com/chirag349/student-management",
-      color: "#d9a85c",
-    },
-    {
-      title: "Garbage Management App",
-      desc: "Flask + REST API",
-      icon: FaFlask,
-      github: "https://github.com/chirag349/garbage-management",
-      color: "#1a2b4b",
-    },
-    {
-      title: "Invoice Generator",
-      desc: "Python + GUI",
-      icon: FaFileInvoice,
-      github: "https://github.com/chirag349/invoice-generator",
-      color: "#d9a85c",
+      title: "AI-Assisted Marks Analyzer",
+      desc: "Python + Machine Learning + NLP + Streamlit",
+      icon: FaBrain,
+      github: "https://github.com/chirag349/ai-assisted-marks-analyzer",
     },
   ];
 
   return (
     <section
       id="projects"
-      className="py-24 px-6 md:px-20 relative overflow-hidden  "
+      className="py-24 px-6 md:px-20 relative overflow-hidden"
     >
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="text-3xl md:text-4xl font-bold text-[#d9a85c] mb-12 text-center"
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-3xl md:text-4xl font-bold text-[#d9a85c] mb-14 text-center"
       >
-        Projects
+        Project
       </motion.h2>
 
-      {/* Project Grid */}
-      <div className="grid md:grid-cols-3 gap-10">
-        {projects.map((p, i) => {
-          const Icon = p.icon;
+      {/* Project Card */}
+      <div className="flex justify-center">
+        {projects.map((project, index) => {
+          const Icon = project.icon;
           return (
             <motion.div
-              key={i}
+              key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="relative flex flex-col items-center justify-center p-8 rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform bg-[#1a2b4b]/70"
+              transition={{ duration: 0.6 }}
+              className="bg-[#1a2b4b]/70 border border-[#d9a85c]/30 rounded-2xl p-10 w-full max-w-md flex flex-col items-center text-center shadow-xl hover:scale-105 transition-transform"
             >
-              {/* Animated Icon */}
+              {/* Icon */}
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
                 className="mb-6 p-6 rounded-full bg-[#d9a85c]/20"
               >
-                <Icon size={50} className="text-[#d9a85c]" />
+                <Icon size={52} className="text-[#d9a85c]" />
               </motion.div>
 
-              {/* Project Title */}
-              <h3 className="text-xl font-semibold text-[#d9a85c] mb-2 text-center">{p.title}</h3>
+              {/* Title */}
+              <h3 className="text-xl font-semibold text-[#d9a85c] mb-3">
+                {project.title}
+              </h3>
 
-              {/* Project Description */}
-              <p className="text-gray-300 text-center mb-4">{p.desc}</p>
+              {/* Description */}
+              <p className="text-gray-300 mb-6">
+                {project.desc}
+              </p>
 
-              {/* GitHub Link */}
+              {/* GitHub Button */}
               <a
-                href={p.github}
+                href={project.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-block px-6 py-2 bg-[#d9a85c] hover:bg-[#b98c49] text-[#0e1625] font-semibold rounded-full shadow-md transition-all"
+                className="px-8 py-3 bg-[#d9a85c] hover:bg-[#b98c49] text-[#0e1625] font-semibold rounded-full transition"
               >
-                GitHub
+                View on GitHub
               </a>
             </motion.div>
           );
         })}
       </div>
 
-      {/* Floating Background Shapes */}
+      {/* Background Animation */}
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 70, ease: "linear" }}
+        transition={{ repeat: Infinity, duration: 80, ease: "linear" }}
         className="absolute top-10 left-10 w-40 h-40 border-2 border-[#d9a85c]/30 rounded-full opacity-20"
       />
       <motion.div
         animate={{ rotate: -360 }}
-        transition={{ repeat: Infinity, duration: 90, ease: "linear" }}
+        transition={{ repeat: Infinity, duration: 100, ease: "linear" }}
         className="absolute bottom-10 right-20 w-64 h-64 border-4 border-[#1a2b4b]/40 rounded-full opacity-15"
       />
     </section>
