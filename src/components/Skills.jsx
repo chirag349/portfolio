@@ -9,12 +9,13 @@ import seaborn from "../assets/seaborn.png";
 
 export default function Skills() {
   const skills = [
-    { name: "Python", icon: PythonIcon, level: 95, bg: "from-yellow-200 to-yellow-400" },
-    { name: "Pandas", icon: PandasIcon, level: 90, bg: "from-green-200 to-green-400" },
-    { name: "Matplotlib", icon: MatplotlibIcon, level: 85, bg: "from-blue-200 to-blue-400" },
-    { name: "Bokeh", icon: BokehIcon, level: 80, bg: "from-pink-200 to-pink-400" },
-    { name: "Plotly", icon: PlotlyIcon, level: 80, bg: "from-purple-200 to-purple-400" },
-    { name: "Seaborn", icon: seaborn, level: 90, bg: "from-purple-200 to-purple-400" },
+{ name: "Python", icon: PythonIcon, level: 95, bg: "from-yellow-400 to-yellow-600" },
+{ name: "Pandas", icon: PandasIcon, level: 90, bg: "from-green-400 to-green-600" },
+{ name: "Matplotlib", icon: MatplotlibIcon, level: 85, bg: "from-blue-400 to-blue-600" },
+{ name: "Bokeh", icon: BokehIcon, level: 80, bg: "from-pink-400 to-pink-600" },
+{ name: "Plotly", icon: PlotlyIcon, level: 80, bg: "from-purple-400 to-purple-600" },
+{ name: "Seaborn", icon: SeabornIcon, level: 90, bg: "from-indigo-400 to-indigo-600" },
+
   ];
 
   return (
