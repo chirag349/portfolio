@@ -5,7 +5,7 @@ import PandasIcon from "../assets/pandas.png";
 import MatplotlibIcon from "../assets/matplot.jpg";
 import BokehIcon from "../assets/bokeh.png";
 import PlotlyIcon from "../assets/Plotly.png";
-import seaborn from "../assets/seaborn.png";
+import SeabornIcon from "../assets/seaborn.png";
 
 export default function Skills() {
   const skills = [
