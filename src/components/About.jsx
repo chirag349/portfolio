@@ -11,7 +11,7 @@ import {
 
 export default function About() {
   // ✅ Added Seaborn + removed icons from display
-  const skills = ["Python", "Pandas", "Matplotlib", "Seaborn", "Bokeh", "Plotly"];
+  const skills = ["Python", "Pandas", "Matplotlib", "Seaborn", "Bokeh", "Plotly","Numpy","Streamlit"];
 
   const socials = [
     { icon: FaGithub, link: "https://github.com/chirag349" },
