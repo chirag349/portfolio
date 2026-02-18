@@ -7,30 +7,30 @@ const Contact = () => {
     { 
       icon: <FaEnvelope />, 
       label: "Email", 
-      value: "skchiragsing.com", 
+      value: "chirag singh", 
       color: "from-blue-500 to-cyan-500", 
-      link: "mailto:skchiragsing.com" 
+      link: "mailto:skchiragsingh@.com" 
     },
     { 
       icon: <FaLinkedin />, 
       label: "LinkedIn", 
-      value: "View Profile", 
+      value: "chirag-singh", 
       color: "from-blue-700 to-indigo-800", 
       link: "https://www.linkedin.com/in/chirag-singh-55149b277" 
     },
     { 
       icon: <FaGithub />, 
       label: "GitHub", 
-      value: "github.com/chirag349", 
+      value: "chirag349", 
       color: "from-slate-800 to-black", 
       link: "https://github.com/chirag349" 
     },
     { 
       icon: <FaWhatsapp />, 
       label: "WhatsApp", 
-      value: "Chat Now", 
+      value: "chirag singh", 
       color: "from-green-500 to-emerald-600", 
-      link: "https://wa.me/yourphonenumber" 
+      link: "https://wa.me/8287746942" 
     },
   ];
 
@@ -111,7 +111,7 @@ const Contact = () => {
                 <label className="text-xs font-bold text-slate-500 uppercase ml-1">Full Name</label>
                 <input
                   type="text"
-                  placeholder="John Doe"
+                  placeholder=""
                   className="w-full p-4 rounded-xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-slate-700"
                   required
                 />
@@ -120,7 +120,7 @@ const Contact = () => {
                 <label className="text-xs font-bold text-slate-500 uppercase ml-1">Email Address</label>
                 <input
                   type="email"
-                  placeholder="john@example.com"
+                  placeholder=""
                   className="w-full p-4 rounded-xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-slate-700"
                   required
                 />
@@ -130,7 +130,7 @@ const Contact = () => {
             <div className="space-y-2">
               <label className="text-xs font-bold text-slate-500 uppercase ml-1">Your Message</label>
               <textarea
-                placeholder="How can I help you?"
+                placeholder=""
                 rows="4"
                 className="w-full p-4 rounded-xl bg-slate-50 border border-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:bg-white transition-all text-slate-700 resize-none"
                 required

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
-import { FaMousePointer, FaTimes, FaChartBar, FaRocket } from "react-icons/fa";
+import { FaMousePointer, FaTimes, FaChartBar, FaRocket, FaBrain } from "react-icons/fa";
 
 // Assets local imports
 import streamlitLogo from "../assets/streamlit.png";
-import plotlyLogo from "../assets/plotly.png"; // Your local Plotly PNG
+import plotlyLogo from "../assets/plotly.png"; 
+import geminiLogo from "../assets/gemini.png"; // Your local Gemini asset
 
 const SkillCard = ({ title, subtitle, icon: Icon, skills, accentColor }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   
+  // Mouse movement values for 3D tilt effect
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
@@ -27,7 +29,7 @@ const SkillCard = ({ title, subtitle, icon: Icon, skills, accentColor }) => {
 
   return (
     <div 
-      className="relative w-full max-w-[360px] h-[480px] perspective-1000"
+      className="relative w-full max-w-[340px] h-[480px] perspective-1000"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { x.set(0); y.set(0); }}
       onClick={() => setIsFlipped(!isFlipped)}
@@ -44,6 +46,7 @@ const SkillCard = ({ title, subtitle, icon: Icon, skills, accentColor }) => {
       >
         {/* FRONT SIDE */}
         <div className="absolute inset-0 w-full h-full backface-hidden rounded-[2.5rem] bg-white border border-slate-200 shadow-2xl overflow-hidden">
+          {/* Dynamic Glow Effect */}
           <motion.div 
             className="absolute inset-0 z-0"
             style={{ background: `radial-gradient(circle at ${glowX} ${glowY}, ${accentColor}15 0%, transparent 70%)` }}
@@ -57,7 +60,7 @@ const SkillCard = ({ title, subtitle, icon: Icon, skills, accentColor }) => {
             >
               <Icon size={40} />
             </motion.div>
-            <h3 className="text-3xl font-black text-slate-800 mb-2">{title}</h3>
+            <h3 className="text-3xl font-black text-slate-800 mb-2 leading-tight">{title}</h3>
             <p className="text-slate-400 font-medium mb-12 text-sm uppercase tracking-widest">{subtitle}</p>
             <div className="flex items-center gap-3 px-8 py-3 bg-slate-900 text-white rounded-2xl text-xs font-bold uppercase tracking-tighter shadow-lg">
               <FaMousePointer className="animate-bounce" /> Flip Card
@@ -75,27 +78,22 @@ const SkillCard = ({ title, subtitle, icon: Icon, skills, accentColor }) => {
             <FaTimes className="text-slate-300" size={14} />
           </div>
 
-          <div className="grid grid-cols-2 gap-4 flex-grow">
+          <div className="grid grid-cols-2 gap-4 flex-grow overflow-y-auto custom-scrollbar">
             <AnimatePresence>
               {isFlipped && skills.map((skill, i) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group flex flex-col items-center justify-center p-4 rounded-3xl bg-slate-50 hover:bg-white border border-transparent hover:border-slate-200 hover:shadow-sm transition-all"
+                  transition={{ delay: i * 0.08 }}
+                  className="group flex flex-col items-center justify-center p-3 rounded-2xl bg-slate-50 hover:bg-white border border-transparent hover:border-slate-200 hover:shadow-sm transition-all"
                 >
-                  <motion.img 
+                  <img 
                     src={skill.img} 
                     alt={skill.name} 
-                    style={{ 
-                        mixBlendMode: 'multiply',
-                        transform: skill.name === "Seaborn" ? "scale(1.4)" : "scale(1)" 
-                    }}
-                    // REMOVED 'grayscale' and 'group-hover:grayscale-0' to keep original colors
-                    className="w-12 h-12 mb-2 object-contain transition-all duration-300" 
+                    className="w-10 h-10 mb-2 object-contain" 
                   />
-                  <span className="text-[10px] font-black text-slate-600 uppercase tracking-tighter mt-1">{skill.name}</span>
+                  <span className="text-[9px] font-black text-slate-600 uppercase tracking-tighter text-center leading-none">{skill.name}</span>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -112,24 +110,38 @@ export default function Skills() {
     { name: "Pandas", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" },
     { name: "Matplotlib", img: "https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" },
     { name: "Seaborn", img: "https://seaborn.pydata.org/_static/logo-mark-lightbg.png" },
-    { name: "Plotly", img: plotlyLogo }, // Using your local PNG
+    { name: "Plotly", img: plotlyLogo },
+  ];
+
+  const aiSkills = [
+    { name: "Gemini", img: geminiLogo }, // Local asset used here
+    { name: "ChatGPT", img: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
   ];
 
   const uiSkills = [
     { name: "Streamlit", img: streamlitLogo }, 
     { name: "Docker", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+    { name: "FastAPI", img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+    
   ];
 
   return (
     <section className="py-24 bg-white flex flex-col items-center px-6 min-h-screen font-sans">
       <div className="text-center mb-16">
-        <h2 className="text-5xl font-black text-slate-900 tracking-tighter uppercase">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-5xl font-black text-slate-900 tracking-tighter uppercase"
+        >
           Technical <span className="text-indigo-600">Capabilities</span>
-        </h2>
+        </motion.h2>
         <div className="h-1.5 w-24 bg-indigo-600 mx-auto mt-4 rounded-full" />
       </div>
 
-      <div className="flex flex-wrap justify-center gap-12 w-full max-w-6xl">
+      {/* Responsive Grid for 3 Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-7xl justify-items-center">
+        {/* Card 1 */}
         <SkillCard 
           title="Data Engine"
           subtitle="Analysis & Insights"
@@ -137,7 +149,17 @@ export default function Skills() {
           skills={vizSkills}
           accentColor="#6366f1"
         />
+
+        {/* Card 2: AI Powered Tools */}
+        <SkillCard 
+          title="AI Power"
+          subtitle="LLMs & Neural Nets"
+          icon={FaBrain}
+          skills={aiSkills}
+          accentColor="#8b5cf6"
+        />
         
+        {/* Card 3 */}
         <SkillCard 
           title="Product UI"
           subtitle="Deployment & Ops"
@@ -149,7 +171,21 @@ export default function Skills() {
 
       <style>{`
         .perspective-1000 { perspective: 1200px; }
-        .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+        .backface-hidden { 
+          backface-visibility: hidden; 
+          -webkit-backface-visibility: hidden; 
+        }
+        /* Custom scrollbar for the skill grid */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #e2e8f0;
+          border-radius: 10px;
+        }
       `}</style>
     </section>
   );

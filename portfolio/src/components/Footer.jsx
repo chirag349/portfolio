@@ -14,31 +14,36 @@ export default function Footer() {
       icon: FaGithub, 
       link: "https://github.com/chirag349", 
       name: "GitHub",
-      color: "from-slate-800 to-black" 
+      color: "from-[#24292e] to-[#1b1f23]", // GitHub Dark Grey
+      iconColor: "text-[#24292e]"
     },
     { 
       icon: FaLinkedin, 
       link: "https://linkedin.com/in/chirag349", 
       name: "LinkedIn",
-      color: "from-blue-600 to-indigo-700"
+      color: "from-[#0077b5] to-[#005582]", // LinkedIn Blue
+      iconColor: "text-[#0077b5]"
     },
     { 
       icon: FaInstagram, 
       link: "https://instagram.com", 
       name: "Instagram",
-      color: "from-pink-500 via-red-500 to-yellow-500" 
+      color: "from-[#833ab4] via-[#fd1d1d] to-[#fcb045]", // Instagram Gradient
+      iconColor: "text-[#e1306c]"
     },
     { 
       icon: FaWhatsapp, 
       link: "https://wa.me/your-number", 
       name: "WhatsApp",
-      color: "from-green-400 to-emerald-600"
+      color: "from-[#25D366] to-[#128C7E]", // WhatsApp Green
+      iconColor: "text-[#25D366]"
     },
     { 
       icon: FaEnvelope, 
       link: "mailto:chirag@example.com", 
       name: "Email",
-      color: "from-blue-400 to-cyan-500"
+      color: "from-[#EA4335] to-[#c5221f]", // Gmail/Email Red
+      iconColor: "text-[#EA4335]"
     },
   ];
 
@@ -49,7 +54,7 @@ export default function Footer() {
       viewport={{ once: true }}
       className="relative overflow-hidden py-16 text-center bg-white border-t border-slate-100"
     >
-      {/* Background Decorative Animations */}
+      {/* Background Decorative Animation (Left Only) */}
       <motion.div
         animate={{ 
           scale: [1, 1.2, 1],
@@ -57,12 +62,6 @@ export default function Footer() {
         }}
         transition={{ duration: 10, repeat: Infinity }}
         className="absolute -top-24 -left-24 w-64 h-64 bg-indigo-200 rounded-full blur-[80px] pointer-events-none"
-      />
-      
-      <motion.div
-        className="absolute top-[-50px] right-[-50px] w-64 h-64 rounded-full border border-indigo-100 pointer-events-none"
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
@@ -95,7 +94,7 @@ export default function Footer() {
           </a>
         </motion.p>
 
-        {/* Social Icons Container with Perspective for 3D effect */}
+        {/* Social Icons Container */}
         <div className="flex justify-center flex-wrap gap-4 sm:gap-6 perspective-1000">
           {socials.map((social, i) => {
             const Icon = social.icon;
@@ -106,24 +105,20 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 title={social.name}
-                // 3D Tilt and Color Pop Effect
                 whileHover={{ 
-                  scale: 1.2,
-                  rotateX: 15,
-                  rotateY: -15,
-                  z: 50
+                  scale: 1.15,
+                  rotateX: 10,
+                  rotateY: -10,
                 }}
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.95 }}
                 className="group relative"
               >
-                <div className={`p-4 rounded-2xl bg-white border border-slate-100 shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:border-transparent flex items-center justify-center`}>
-                  {/* Colored Icon that appears on hover */}
-                  <Icon className="text-2xl text-slate-400 group-hover:hidden" />
+                <div className="p-4 rounded-2xl bg-white border border-slate-100 shadow-sm transition-all duration-300 group-hover:shadow-xl flex items-center justify-center">
+                  {/* Icon with Brand Color */}
+                  <Icon className={`text-2xl ${social.iconColor} transition-transform duration-300 group-hover:scale-110`} />
                   
-                  {/* Gradient Icon/Background that reveals on hover */}
-                  <div className={`hidden group-hover:flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br ${social.color} text-white shadow-lg`}>
-                    <Icon className="text-xl" />
-                  </div>
+                  {/* Subtle Background Glow on Hover */}
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${social.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
                 </div>
               </motion.a>
             );
