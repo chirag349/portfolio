@@ -4,7 +4,7 @@ import { FaMousePointer, FaTimes, FaChartBar, FaRocket, FaBrain } from "react-ic
 
 // Assets local imports
 import streamlitLogo from "../assets/streamlit.png";
-import plotlyLogo from "../assets/plotly.png"; 
+import plotlyLogo from "../assets/Plotly.png"; 
 import geminiLogo from "../assets/gemini.png"; // Your local Gemini asset
 
 const SkillCard = ({ title, subtitle, icon: Icon, skills, accentColor }) => {
